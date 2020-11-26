@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ActivityIndicator, StyleSheet, View, FlatList } from 'react-native';
+import {
+  ActivityIndicator,
+  StyleSheet,
+  View,
+  FlatList,
+  RefreshControl,
+} from 'react-native';
 
 import HeroListItem from '../../Components/HeroListItem/HeroListItem';
 
@@ -7,6 +13,7 @@ const HeroListScreen = (props: any) => {
   const { navigation } = props;
   const [heroes, setHeroes] = useState<[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [refreshing, setRefreshing] = useState<boolean>(false);
 
   const goToNextScreen = () => {
     navigation.navigate('HeroDetail');
@@ -23,9 +30,15 @@ const HeroListScreen = (props: any) => {
 
       setHeroes(json);
       setLoading(false);
+      setRefreshing(false);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    getHeroes();
   };
 
   useEffect(() => {
@@ -33,7 +46,7 @@ const HeroListScreen = (props: any) => {
     getHeroes();
   }, []);
 
-  return loading ? (
+  return loading || refreshing ? (
     <View style={[styles.spinnerContainer, styles.horizontal]}>
       <ActivityIndicator size={200} color='red' />
     </View>
@@ -42,7 +55,9 @@ const HeroListScreen = (props: any) => {
       <FlatList
         data={heroes}
         renderItem={renderItem}
-        // keyExtractor={(item) => item.id}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       />
     </View>
   );
