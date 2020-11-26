@@ -20,7 +20,14 @@ const HeroListScreen = (props: any) => {
   };
 
   const renderItem = function ({ item }: { item: any }) {
-    return <HeroListItem text={item.localized_name} />;
+    return (
+      <HeroListItem
+        image={item.img}
+        title={item.localized_name}
+        attackType={item.attack_type}
+        roles={item.roles}
+      />
+    );
   };
 
   const getHeroes = async () => {
@@ -55,6 +62,7 @@ const HeroListScreen = (props: any) => {
       <FlatList
         data={heroes}
         renderItem={renderItem}
+        keyExtractor={(item) => item.id}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
@@ -67,10 +75,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#ECF0F1',
+    backgroundColor: '#18191a',
     padding: 8,
   },
   spinnerContainer: {
+    backgroundColor: '#18191a',
     flex: 1,
     justifyContent: 'center',
   },
