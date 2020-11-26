@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   ActivityIndicator,
-  StyleSheet,
   View,
   FlatList,
   RefreshControl,
@@ -16,17 +15,19 @@ const HeroListScreen = (props: any) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [refreshing, setRefreshing] = useState<boolean>(false);
 
-  const goToNextScreen = () => {
-    navigation.navigate('HeroDetail');
+  const onItemPress = (id: number) => {
+    navigation.navigate('HeroDetail', { hero: heroes[id] });
   };
 
-  const renderItem = function ({ item }: { item: any }) {
+  const renderItem = function ({ item, index }: { item: any; index: any }) {
     return (
       <HeroListItem
+        idx={index}
         image={item.img}
         title={item.localized_name}
         attackType={item.attack_type}
         roles={item.roles}
+        press={onItemPress}
       />
     );
   };
@@ -63,7 +64,7 @@ const HeroListScreen = (props: any) => {
       <FlatList
         data={heroes}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item, index) => item.id}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }

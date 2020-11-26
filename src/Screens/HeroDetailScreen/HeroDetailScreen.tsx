@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
 import styles from './HeroDetailScreen.style';
 
 const HeroDetailScreen = (props: any) => {
+  React.useEffect(() => {
+    console.log('https://api.opendota.com' + props.route.params.hero.img);
+  }, []);
+
   return (
-    <View>
-      <Text>Test</Text>
+    <View style={styles.container}>
+      <Image
+        source={{
+          uri: 'https://api.opendota.com' + props.route.params.hero.img,
+        }}
+        style={styles.image}
+      />
     </View>
   );
 };
