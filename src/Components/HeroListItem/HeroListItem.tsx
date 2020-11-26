@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { TouchableOpacity, Text, Image, View } from 'react-native';
 
 import styles from './HeroListItem.style';
@@ -11,7 +11,7 @@ type HeroItemProps = {
   attackType: string;
   roles: [];
 };
-class HeroListItem extends React.PureComponent<HeroItemProps> {
+class HeroListItem extends PureComponent<HeroItemProps> {
   render() {
     return (
       <TouchableOpacity

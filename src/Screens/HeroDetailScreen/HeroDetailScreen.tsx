@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, Image } from 'react-native';
 
+import AttributeBox from '../../Components/AttributeBox/AttributeBox';
 import styles from './HeroDetailScreen.style';
 
 const HeroDetailScreen = (props: any) => {
-  React.useEffect(() => {
-    console.log(props.route.params.hero);
-  }, []);
-
   return (
     <View style={styles.container}>
       <Image
@@ -64,6 +61,36 @@ const HeroDetailScreen = (props: any) => {
         <Text style={styles.statText}>
           {props.route.params.hero.base_int} Intelligence
         </Text>
+      </View>
+      <View style={styles.attributeRow}>
+        <AttributeBox
+          text='Base Armor'
+          value={props.route.params.hero.base_armor}
+        />
+        <AttributeBox
+          text='Move Speed'
+          value={props.route.params.hero.move_speed}
+        />
+      </View>
+      <View style={styles.attributeRow}>
+        <AttributeBox
+          text='Attack Speed'
+          value={props.route.params.hero.attack_rate}
+        />
+        <AttributeBox
+          text='Attack Range'
+          value={props.route.params.hero.attack_range}
+        />
+      </View>
+      <View style={styles.attributeRow}>
+        <AttributeBox
+          text='Base Health'
+          value={props.route.params.hero.base_health}
+        />
+        <AttributeBox
+          text='Base Mana'
+          value={props.route.params.hero.base_mana}
+        />
       </View>
     </View>
   );

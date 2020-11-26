@@ -27,8 +27,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
   },
   diamond: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     backgroundColor: '#303133',
     borderWidth: 5,
     transform: [{ rotate: '45deg' }],
@@ -46,8 +46,12 @@ export default StyleSheet.create({
   },
   statText: {
     color: '#fff',
-    fontSize: 32,
+    fontSize: 24,
     marginLeft: '15%',
     marginTop: '5%',
+  },
+  attributeRow: {
+    flexDirection: 'row',
+    height: '13%',
   },
 });
