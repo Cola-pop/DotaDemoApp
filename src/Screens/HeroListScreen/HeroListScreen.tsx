@@ -5,6 +5,7 @@ import {
   FlatList,
   RefreshControl,
 } from 'react-native';
+import { connect } from 'react-redux';
 
 import HeroListItem from '../../Components/HeroListItem/HeroListItem';
 import styles from './HeroListScreen.style';
@@ -38,6 +39,7 @@ const HeroListScreen = (props: any) => {
       let json = await response.json();
 
       setHeroes(json);
+      props.updateHeroes(json);
       setLoading(false);
       setRefreshing(false);
     } catch (error) {
@@ -64,7 +66,7 @@ const HeroListScreen = (props: any) => {
       <FlatList
         data={heroes}
         renderItem={renderItem}
-        keyExtractor={(item, index) => item.id}
+        keyExtractor={(item) => item.id}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
@@ -73,4 +75,18 @@ const HeroListScreen = (props: any) => {
   );
 };
 
-export default HeroListScreen;
+function mapStateToProps(state: any) {
+  return {
+    heroes: state,
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  return {
+    updateHeroes: (newHeroes: any) => {
+      return dispatch({ type: 'UPDATE_HEROES', newHeroes: newHeroes });
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeroListScreen);
