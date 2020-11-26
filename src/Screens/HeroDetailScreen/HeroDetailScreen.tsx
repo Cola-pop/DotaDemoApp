@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Text, StyleSheet, StatusBar, View } from 'react-native';
+import { Text, View } from 'react-native';
+
+import styles from './HeroDetailScreen.style';
 
 const HeroDetailScreen = (props: any) => {
   return (

@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   item: {
     flexDirection: 'row',
-    backgroundColor: '#ff9999',
+    backgroundColor: '#d16f6f',
     padding: 20,
     margin: 5,
     borderRadius: 15,
