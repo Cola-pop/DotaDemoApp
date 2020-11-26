@@ -4,11 +4,11 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#18191a',
+    backgroundColor: '#303133',
     padding: 8,
   },
   spinnerContainer: {
-    backgroundColor: '#18191a',
+    backgroundColor: '#303133',
     flex: 1,
     justifyContent: 'center',
   },
