@@ -17,7 +17,7 @@ const HeroListScreen = (props: any) => {
   const [refreshing, setRefreshing] = useState<boolean>(false);
 
   const onItemPress = (id: number) => {
-    navigation.navigate('HeroDetail', { hero: heroes[id] });
+    navigation.navigate('Hero Detail', { hero: heroes[id] });
   };
 
   const renderItem = function ({ item, index }: { item: any; index: any }) {
