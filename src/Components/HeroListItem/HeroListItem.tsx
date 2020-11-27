@@ -30,8 +30,10 @@ class HeroListItem extends PureComponent<HeroItemProps> {
           <Text style={styles.itemTitle}>{this.props.title}</Text>
           <Text style={styles.itemAttackType}>
             {this.props.attackType} |{' '}
-            {this.props.roles.map((role: any) => (
-              <Text style={styles.role}>{role} </Text>
+            {this.props.roles.map((role: string, index: number) => (
+              <Text key={index} style={styles.role}>
+                {role}{' '}
+              </Text>
             ))}
           </Text>
         </View>

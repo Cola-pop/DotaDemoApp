@@ -16,8 +16,10 @@ const HeroDetailScreen = (props: any) => {
       <Text style={styles.title}>{props.route.params.hero.localized_name}</Text>
       <Text style={styles.subTitle}>
         {props.route.params.hero.attack_type} |{' '}
-        {props.route.params.hero.roles.map((role: any) => (
-          <Text style={styles.role}>{role} </Text>
+        {props.route.params.hero.roles.map((role: string, index: number) => (
+          <Text key={index} style={styles.role}>
+            {role}{' '}
+          </Text>
         ))}
       </Text>
       <View style={styles.statRow}>

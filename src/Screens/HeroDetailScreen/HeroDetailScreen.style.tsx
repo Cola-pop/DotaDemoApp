@@ -4,6 +4,7 @@ export default StyleSheet.create({
   container: {
     flexDirection: 'column',
     backgroundColor: '#303133',
+    height: '100%',
   },
   image: {
     width: '90%',

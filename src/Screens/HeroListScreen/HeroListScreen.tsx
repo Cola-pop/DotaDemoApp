@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
+  Alert,
   ActivityIndicator,
   View,
   FlatList,
@@ -43,7 +44,7 @@ const HeroListScreen = (props: any) => {
       setLoading(false);
       setRefreshing(false);
     } catch (error) {
-      console.log(error);
+      Alert.alert('An error occured', error);
     }
   };
 
